@@ -1,0 +1,187 @@
+1. Write a Java code to get the text available in 3rd window and move the control to 2nd window and close it.
+2. Write Java code to Count no. Of words and sentence in notepad.
+3.Java Code to find out Length of the string without using length function.
+4.Write a code for screen shot ?
+5.Write test case for google search.
+6.An array of zero and one was given. Need to segregate them.  
+7.Fist repeated element in an array of integer
+8.Find the missing number
+9.write a program to print reverse a string?
+10.write a program to print repeated characters in a string?
+11.write a program to print leap year?
+12.write a program to print this series?
+13.write a program to print the count the number of words , lines in a paragraph?
+14.write a program to get number of Frame/iframe in a page.
+15.write a program to get autosuggestions?
+
+================================================================================================================================================
+1. Write a Java code to get the text available in 3rd window and move the control to 2nd window and close it.
+
+  not exact code but something similar to this will work.
+  
+ String DefaultTab= driver.getWindowHandle(); //Defaul One
+ //Do some operation to open 2nd window
+ ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+  tabs2 .remove(DefaultTab);
+  driver.switchTo().window(tabs2.get(0));
+  String SecondTab= driver.getWindowHandle();
+ //Do some operation to open 3rd window
+ ArrayList<String> tabs3 = new ArrayList<String> (driver.getWindowHandles());
+    tabs3.remove(DefaultTab);
+    tabs3.remove(SecondTab);
+    driver.switchTo().window(tabs3.get(0));
+//Perform some operation to get text
+    driver.close();
+// Now going back to 2nd  window (Idea is first go to the default window and then switch to 2nd window)
+    driver.switchTo().window(DefaultTab);
+    driver.switchTo().window(tabs2.get(0));
+
+
+=================================================================================================================================================
+2. Write Java code to Count no. Of words and sentence in notepad.
+   
+   *****First, I would use a BufferedReader to read the file line-by-line using readLine(). Then split each line on whitespace using String.split("\\s") and use the size of the resulting array to see how many words are on that line.
+   
+   
+    public class readingOnly {
+
+	public static void main(String[] args) throws IOException 
+	{
+
+		File f1 = new File("E:\\PERSONAL\\Self Learning\\SelfStudy\\SamplePic\\test.txt");				
+		FileReader in = new FileReader(f1);		
+		BufferedReader bin = new BufferedReader(in);
+		String s1= bin.readLine();
+		int noOfSentence=0;
+		int noOfWords=0;		
+	    while(s1!= null)
+		{
+	    	String []parts = s1.split("\\s");			
+		    //System.out.println(s1);
+		    for( String w : parts)
+	          {
+		    	noOfWords++;        
+	          }
+			s1=bin.readLine();
+			noOfSentence++;
+		}
+	    System.out.println("No Of Sentence " + noOfSentence);
+	    System.out.println("No Of Words " + noOfWords);
+		bin.close();
+		in.close();
+	}
+
+
+===================================================================================================================================================
+3.Java Code to find out Length of the string without using length function.
+
+    //Program to find the Length of the string without using length method
+	public static void main(String[] args) 
+	{
+
+		String s1= "This is for learning and practice purpose";
+		int noOfCharater=0;		
+		//char [] array;
+		for( char c : s1.toCharArray())
+        {
+			noOfCharater++;        
+        }
+		System.out.println("The Length of the string is " + noOfCharater);
+	}
+
+}
+
+
+====================================================================================================================================================
+4.Write a code for screen shot ?
+
+    @Override
+	public void onTestFailure(ITestResult arg0) 
+	{
+		    
+		    String Testcase= arg0.getName();
+		   // IClass Testcase1=arg0.getTestClass();
+			File scrFile = ((TakesScreenshot)Browser.driver).getScreenshotAs(OutputType.FILE);
+			String drc = "E:\\Results\\  " + Testcase + ".png";
+			System.out.println("in listner" + arg0);
+			//String drc = "E:\\Results\\  " + ".png";
+			File file = new File(drc);
+			try {
+				FileUtils.copyFile(scrFile, file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+======================================================================================================================================================
+5.Write test case for Google search ?
+
+ 
+   
+
+
+
+========================================================================================================================================================
+14.write a program to get number of Frame/iframe in a page.
+   
+   //Assume driver is initialized properly.
+   List<WebElement> ele = Browser.driver.findElements(By.tagName("iframe"));
+	    System.out.println("Number of frames in a page :" + ele.size());
+	    for(WebElement el : ele){
+	      //Returns the Id of a frame.
+	        System.out.println("Frame Id :" + el.getAttribute("id"));
+	      //Returns the Name of a frame.
+	        System.out.println("Frame name :" + el.getAttribute("name"));
+	    }
+	    
+
+=======================================================================================================================================================
+
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class SearchSuggestion {
+ 
+WebDriver driver;
+ 
+ @BeforeTest
+ public void start(){
+   driver = new FirefoxDriver(); 
+ }
+  
+ @Test
+  public void SearchSuggestion() {
+  
+  driver.get("http://google.com");
+  driver.findElement(By.id("gbqfq")).sendKeys("vam");
+  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  
+   WebElement table = driver.findElement(By.className("gssb_m")); 
+   List rows = table.findElements(By.tagName("tr")); 
+   Iterator i = rows.iterator(); 
+   System.out.println("-----------------------------------------"); 
+   while(i.hasNext()) { 
+           WebElement row = i.next(); 
+           List columns = row.findElements(By.tagName("td")); 
+           Iterator j = columns.iterator(); 
+           while(j.hasNext()) { 
+                   WebElement column = j.next(); 
+                   System.out.println(column.getText()); 
+           } 
+           System.out.println(""); 
+            
+   System.out.println("-----------------------------------------"); 
+   } 
+  } 
+}
+
+==================================================================================================================================================

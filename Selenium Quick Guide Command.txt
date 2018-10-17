@@ -1,0 +1,91 @@
+selenium keywords and description :
+
+Get Commands
+1. get()  -  It automatically opens a new browser window and fetches the page that you specify inside its parentheses.
+          It is the counterpart of Selenium IDE's "open" command.
+          The parameter must be a String object.
+
+2. getTitle() - Needs no parameters
+                Fetches the title of the current page
+                Leading and trailing white spaces are trimmed
+                Returns a null string if the page has no title
+				
+3. getPageSource() - Needs no parameters
+                     Returns the source code of the page as a String value
+					 
+4. getCurrentUrl() - Needs no parameters
+                     Fetches the string representing the current URL that the browser is looking at
+					 
+5. getText()  - Fetches the inner text of the element that you specify
+
+======================================================================================================
+
+Navigate commands :
+
+6. navigate().to()  -  It automatically opens a new browser window and fetches the page that you specify inside its parentheses.
+                       It does exactly the same thing as the get() method.
+					   
+7. navigate().refresh()  -  Needs no parameters.
+                            It refreshes the current page.
+							
+8. navigate().back()  -  Needs no parameters
+                         Takes you back by one page on the browser's history.
+						 
+9. navigate().forward()  - Needs no parameters
+                           Takes you forward by one page on the browser's history.
+						   
+=========================================================================================================
+
+Closing and Quitting Browser Windows :
+
+10. close()  - Needs no parameters.
+               It closes only the browser window that WebDriver is currently controlling.
+			   
+11. quit()  -  Needs no parameters
+               It closes all windows that WebDriver has opened.
+			   
+==========================================================================================================
+
+
+
+To start using the WebDriver API, you must import at least these two packages.
+org.openqa.selenium.*
+org.openqa.selenium.firefox.FirefoxDriver
+The get() method is the equivalent of Selenium IDE's "open" command.
+Locating elements in WebDriver is done by using the findElement() method.
+The following are the available options for locating elements in WebDriver:
+By.className
+By.cssSelector
+By.id
+By.linkText
+By.name
+By.partialLinkText
+By.tagName
+By.xpath
+The By.cssSelector() does not support the "contains" feature.
+You can instantiate an element using the WebElement class.
+Clicking on an element is done by using the click() method.
+WebDriver provides these useful get commands:
+get()
+getTitle()
+getPageSource()
+getCurrentUrl()
+getText()
+WebDriver provides these useful navigation commands
+navigate().forward()
+navigate().back()
+navigate().to()
+navigate().refresh()
+The close() and quit() methods are used to close browser windows. Close() is used to close a single window; while quit() is used to close all windows associated to the parent window that the WebDriver object was controlling.
+The switchTo().frame() and switchTo().alert() methods are used to direct WebDriver's focus onto a frame or alert, respectively.
+Implicit waits are used to set the waiting time throughout the program, while explicit waits are used only on specific portions.
+You can use the isEnabled(), isDisplayed(),isSelected(), and a combination of WebDriverWait and ExpectedConditions methods when verifying the state of an element. However, they do not verify if the element exists.
+When isEnabled(), isDisplayed(),or isSelected() was called while the element was not existing, WebDriver will throw a NoSuchElementException.
+When WebDriverWait and ExpectedConditions methods were called while the element was not existing, WebDriver would throw a TimeoutException. 
+Note:
+
+driver.get() : It's used to go to the particular website , But it doesn't maintain the browser History and cookies so , we can't use forward and backward button , if we click on that , page will not get schedule
+
+driver.navigate() : it's used to go to the particular website , but it maintains the browser history and cookies, so we can use forward and backward button to navigate between the pages during the coding of Testcase
+
+ 
