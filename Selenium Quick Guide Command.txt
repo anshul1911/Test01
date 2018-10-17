@@ -46,8 +46,62 @@ Closing and Quitting Browser Windows :
 			   
 ==========================================================================================================
 
+Browser initiation:
 
+12. WebDriver driver=new FirefoxDriver();
+13. WebDriver driver=new SafariDriver();
+14. WebDriver driver=new chromeDriver();
+15. WebDriver driver=new InternetExplorerDriver();
 
+==========================================================================================================
+
+Open URL:
+
+16. driver.get(“https://www.google.com”);
+
+==========================================================================================================
+Miscellaneous :
+
+Select a Value from Dropdown:
+
+17. Select select = new Select(driver.findElement(By.tagName(“select”)));
+    select.selectByVisibleText(“Apple”);
+
+Switch to window:
+
+18. driver.switchTo().window(“windowName”);
+
+Switch to Frame:
+
+19. driver.switchTo().frame(“frameName”);
+
+Switch to Alert:
+
+20. driver.switchTo().alert().accept();
+
+Confirmation Box:
+
+21. driver.switchTo().alert().accept();
+22. driver.switchTo().alert().dismiss();
+
+=============================================================================================================
+
+Using Actions Class
+
+23. Drag and Drop
+
+       WebElement source = sdriver.findElement(By.name(“source”));
+       WebElement target = driver.findElement(By.name(“target”));
+      (new Actions(driver)).dragAndDrop(source, target).perform(); 
+	  
+	  
+24. Mouse Hover:
+
+       Actions builder = new Actions(driver);
+       WebElementtagElement = driver.findElement(By.id(“someid”));
+       builder.moveToElement(tagElement).build().perform();
+
+	   
 To start using the WebDriver API, you must import at least these two packages.
 org.openqa.selenium.*
 org.openqa.selenium.firefox.FirefoxDriver
